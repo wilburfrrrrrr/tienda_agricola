@@ -4,7 +4,6 @@ from icrud import Icrud
 
 
 class IcrudCliente(Icrud):
-	lista_clientes = []
 	def create(self, **kwargs):
 		return Cliente(kwargs['nombre'], kwargs['cedula'])	
 	
@@ -15,10 +14,7 @@ class IcrudCliente(Icrud):
 		Cliente.pedidos = kwargs['pedidos']
 		return Cliente	
 
-	def verifica_cliente(cedula):
-		for cliente in lista_clientes:
-			if cliente.cedula == cedula:
-				raise Exception("Ya existe un cliente con la cedula indicada.")
+	
 			
 	# def read_historial(cedula):
 	# 	cliente = read_cliente(cedula)	
