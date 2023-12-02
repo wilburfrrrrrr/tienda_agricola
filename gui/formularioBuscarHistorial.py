@@ -1,15 +1,15 @@
 from forms import buscar_historial
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QLabel, QVBoxLayout, QTextEdit, QPushButton, QLineEdit, QWidget, QStackedWidget
+from PyQt5.QtWidgets import QMainWindow, QMessageBox
+from PyQt5.QtCore import pyqtSignal
 from controller.buscarCedula import HistorialController
-import sys
 
 class FormularioBuscarHistorial(QMainWindow, buscar_historial.Ui_MainWindow):
+	redirect_menu_inicial = pyqtSignal()
 	def __init__(self):
 		super().__init__()
 		self.setupUi(self)
-		self.botonBuscar.clicked.connect(self.buscarCedula)
-		self.botonVolver.clicked.connect(self.volver)
-		self.botonSalir.clicked.connect(self.salir)
+		self.pushButton.clicked.connect(self.buscarCedula)
+		self.buscar_historial_pushButton_volver.clicked.connect(self.volver)
 		
 	def buscarCedula(self):
 		self.cedula = self.buscar_historial_lineEdit_cedula.text()
@@ -35,15 +35,6 @@ class FormularioBuscarHistorial(QMainWindow, buscar_historial.Ui_MainWindow):
 			emergente.exec_()	
 
 	def volver(self):
-		self.ui.cedula.setText("")
-		self.ui.textEdit.setText("")
-		self.close()
+		self.buscar_historial_lineEdit_cedula.clean()
+		self.redirect_menu_inicial.emit()
 	
-	
-
-if __name__ == '__main__':
-	app = QApplication(sys.argv)
-	GUI = FormularioBuscarHistorial()
-	GUI.setWindowTitle('Administracion Vivero')
-	GUI.show()
-	sys.exit(app.exec_())

@@ -1,9 +1,11 @@
 from forms import cargar_productos
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QLabel, QVBoxLayout, QTextEdit, QPushButton, QLineEdit, QWidget, QStackedWidget
+from PyQt5.QtWidgets import QMainWindow, QMessageBox
+from PyQt5.QtCore import pyqtSignal
 from controller.cargarPedido import PedidoController
-import sys
 
 class FormularioCargarPedido(QMainWindow, cargar_productos.Ui_MainWindow):
+	redirect_menu_inicial = pyqtSignal()
+	redirect_comprar_productos = pyqtSignal()
 	def __init__(self):
 		super().__init__()
 		self.setupUi(self)
@@ -20,6 +22,7 @@ class FormularioCargarPedido(QMainWindow, cargar_productos.Ui_MainWindow):
 				emergente.setIcon(QMessageBox.Information)
 				emergente.setText(pedido)
 				emergente.exec_()
+				self.redirect_menu_inicial.emit()
 			else:
 				emergente = QMessageBox()
 				emergente.setIcon(QMessageBox.Warning)
@@ -38,12 +41,6 @@ class FormularioCargarPedido(QMainWindow, cargar_productos.Ui_MainWindow):
 	def volver(self):
 		self.cargar_cuenta_lineEdit_cedula.clean()
 		self.cargar_cuenta_lineEdit_nombre.clean()
+		self.redirect_comprar_productos.emit()
 	
 	
-
-if __name__ == '__main__':
-	app = QApplication(sys.argv)
-	GUI = FormularioCargarPedido()
-	GUI.setWindowTitle('Administracion Vivero')
-	GUI.show()
-	sys.exit(app.exec_())

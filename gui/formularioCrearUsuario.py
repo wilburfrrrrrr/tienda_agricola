@@ -1,18 +1,19 @@
 from forms import crear_usuario
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QLabel, QVBoxLayout, QTextEdit, QPushButton, QLineEdit, QWidget, QStackedWidget
+from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from controller.crearClientes import ClienteController
-import sys
+from PyQt5.QtCore import pyqtSignal
 
 class FormularioCrearUsuario(QMainWindow, crear_usuario.Ui_MainWindow):
+	redirect_menu_inicial = pyqtSignal()
 	def __init__(self):
 		super().__init__()
 		self.setupUi(self)
-		self.registrar_crear	.clicked.connect(self.crearUsuario)
+		self.registrar_crear.clicked.connect(self.crearUsuario)
 		self.registrar_pushButton_volver.clicked.connect(self.volver)
 		
 	def crearUsuario(self):
-		self.cedula = self.cedula.text()
-		self.nombre = self.nombre.text()
+		self.cedula = self.registrar_label_lineEdit_cedula.text()
+		self.nombre = self.registrar_label_lineEdit_nombre.text()
 
 		if self.cedula and self.nombre:
 			ClienteController().crearCliente(self.cedula, self.nombre)
@@ -29,15 +30,8 @@ class FormularioCrearUsuario(QMainWindow, crear_usuario.Ui_MainWindow):
 			emergente.exec_()
 	
 	def volver(self):
-		self.cedula.setText("")
-		self.nombre.setText("")
-		self.apellido.setText("")
-		self.textEdit.setText("")
-		self.close()
+		self.registrar_label_lineEdit_nombre.clean()
+		self.registrar_label_lineEdit_cedula.clean()
+		self.redirect_menu_inicial.emit()
+		
 	
-if __name__ == '__main__':
-	app = QApplication(sys.argv)
-	GUI = FormularioCrearUsuario()
-	GUI.setWindowTitle('Administracion Vivero')
-	GUI.show()
-	sys.exit(app.exec_())

@@ -1,9 +1,8 @@
 from crud import crudCliente
 from crearClientes import ClienteController
 
-class HistorialController():
-
-	def buscar_cliente(cedula):
+class HistorialController:
+	def buscar_cliente(self, cedula):
 		for cliente in ClienteController.lista_clientes:
 			if cliente.cedula == cedula:
 				return cliente

@@ -1,51 +1,25 @@
 from forms import menu_inicial
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QLabel, QVBoxLayout, QTextEdit, QPushButton, QLineEdit, QWidget, QStackedWidget
-import sys
-from formularioCrearUsuario import FormularioCrearUsuario
-from formularioCargarPedido import FormularioCargarPedido
-from formularioBuscarHistorial import FormularioBuscarHistorial
-from formularioComprarProductos import FormularioComprarProductos
+from PyQt5.QtWidgets import  QMainWindow
+from PyQt5.QtCore import pyqtSignal
+
 
 class FormularioMenuInicial(QMainWindow, menu_inicial.Ui_MainWindow):
+	redirect_crear_usuario = pyqtSignal()
+	redirect_comprar_productos = pyqtSignal()
+	redirect_buscar_historial = pyqtSignal()
 	def __init__(self):
 		super().__init__()
 		self.setupUi(self)
-		self.botonCrearUsuario.clicked.connect(self.crearUsuario)
-		self.botonBuscarHistorial.clicked.connect(self.buscarHistorial)
-		self.botonComprarProductos.clicked.connect(self.comprarProductos)
+		self.menu_inicial_pushButton_crear_cuenta.clicked.connect(self.crearUsuario)
+		self.pushButton_historial.clicked.connect(self.buscarHistorial)
+		self.menu_inicial_pushButton_compra.clicked.connect(self.comprarProductos)
 		
 	def crearUsuario(self):
-		from forms import formularioCrearUsuario
-		self.formularioCrearUsuario = formularioCrearUsuario.FormularioCrearUsuario()
-		self.formularioCrearUsuario.show()
-	
-	def cargarPedido(self):
-		from forms import formularioCargarPedido
-		self.formularioCargarPedido = formularioCargarPedido.FormularioCargarPedido()
-		self.formularioCargarPedido.show()
+		self.redirect_crear_usuario.emit()
 	
 	def buscarHistorial(self):
-		from forms import formularioBuscarHistorial
-		self.formularioBuscarHistorial = formularioBuscarHistorial.FormularioBuscarHistorial()
-		self.formularioBuscarHistorial.show()
+		self.redirect_buscar_historial.emit()
 	
 	def comprarProductos(self):
-		from forms import formularioComprarProductos
-		self.formularioComprarProductos = formularioComprarProductos.FormularioComprarProductos()
-		self.formularioComprarProductos.show()
+		self.redirect_comprar_productos.emit()
 	
-		
-if __name__ == '__main__':
-	app = QApplication(sys.argv)
-
-	stacked_widget = QStackedWidget()
-	stacked_widget.addWidget(FormularioMenuInicial())
-	stacked_widget.addWidget(FormularioCrearUsuario())
-	stacked_widget.addWidget(FormularioBuscarHistorial())
-	stacked_widget.addWidget(FormularioComprarProductos())
-	stacked_widget.addWidget(FormularioCargarPedido())	
-
-	GUI = FormularioMenuInicial()
-	GUI.setWindowTitle('Administracion Vivero')
-	GUI.show()
-	sys.exit(app.exec_())

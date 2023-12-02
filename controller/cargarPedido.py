@@ -1,13 +1,13 @@
 from crud import crudPedidos, crudCliente
-from comprarProductos import ProductoController
+from comprarProductos import VentasController
 
 class PedidoController:
-	def cargar_pedido(self, id_usuario, id_pedido, lista_productos):
+	def cargar_pedido(self, id_usuario):
 		try:
 			cliente = crudCliente.buscar_cliente(id_usuario)
-			pedido = crudPedidos.crear_pedido(id_pedido, cliente, productos = ProductoController.lista_productos)
+			pedido = crudPedidos.crear_pedido(cliente, productos = VentasController.lista_productos)
 			crudCliente.IcrudCliente.relation(pedido = pedido)
-			ProductoController.vaciar_lista()
+			VentasController.vaciar_lista()
 			return pedido
 		except Exception as e:
 			raise e
