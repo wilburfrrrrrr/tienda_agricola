@@ -50,6 +50,9 @@ class Ui_Crear_usuario(object):
         self.registrar_pushButton_volver = QtWidgets.QPushButton(self.frame_registrar)
         self.registrar_pushButton_volver.setGeometry(QtCore.QRect(10, 110, 75, 23))
         self.registrar_pushButton_volver.setObjectName("registrar_pushButton_volver")
+        self.registrar_crear = QtWidgets.QPushButton(self.frame_registrar)
+        self.registrar_crear.setGeometry(QtCore.QRect(220, 110, 75, 23))
+        self.registrar_crear.setObjectName("registrar_crear")
         self.verticalLayout_registrar.addWidget(self.frame_registrar)
         Crear_usuario.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(Crear_usuario)
@@ -70,6 +73,7 @@ class Ui_Crear_usuario(object):
         self.registrar_label_nombre.setText(_translate("Crear_usuario", "Nombre"))
         self.registrar_label_titulo.setText(_translate("Crear_usuario", "Registrar usuario"))
         self.registrar_pushButton_volver.setText(_translate("Crear_usuario", "Volver"))
+        self.registrar_crear.setText(_translate("Crear_usuario", "Crear"))
 
 
 if __name__ == "__main__":

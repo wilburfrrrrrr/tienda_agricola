@@ -677,6 +677,55 @@
          <string>Volver</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="cargar_pedido">
+        <property name="geometry">
+         <rect>
+          <x>624</x>
+          <y>550</y>
+          <width>111</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Cargar Producto</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="carro_compras">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>280</y>
+          <width>331</width>
+          <height>261</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="principal_label_carro">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>260</y>
+          <width>131</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>  Carrito de Compras</string>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="margin">
+         <number>-5</number>
+        </property>
+       </widget>
       </widget>
      </item>
     </layout>

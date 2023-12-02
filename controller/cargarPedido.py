@@ -7,6 +7,7 @@ class PedidoController:
 			cliente = crudCliente.buscar_cliente(id_usuario)
 			pedido = crudPedidos.crear_pedido(id_pedido, cliente, productos = ProductoController.lista_productos)
 			crudCliente.IcrudCliente.relation(pedido = pedido)
+			ProductoController.vaciar_lista()
 			return pedido
 		except Exception as e:
 			raise e

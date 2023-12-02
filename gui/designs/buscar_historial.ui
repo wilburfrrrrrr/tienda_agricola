@@ -36,7 +36,7 @@
         <property name="geometry">
          <rect>
           <x>130</x>
-          <y>50</y>
+          <y>70</y>
           <width>111</width>
           <height>21</height>
          </rect>
@@ -46,36 +46,13 @@
         <property name="geometry">
          <rect>
           <x>80</x>
-          <y>50</y>
+          <y>70</y>
           <width>47</width>
           <height>13</height>
          </rect>
         </property>
         <property name="text">
          <string>Cédula</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="buscar_historial_label_nombre">
-        <property name="geometry">
-         <rect>
-          <x>80</x>
-          <y>80</y>
-          <width>47</width>
-          <height>13</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Nombre</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="buscar_historial_lineEdit_nombre">
-        <property name="geometry">
-         <rect>
-          <x>130</x>
-          <y>80</y>
-          <width>111</width>
-          <height>21</height>
-         </rect>
         </property>
        </widget>
        <widget class="QLabel" name="buscar_historial_label_titulo">
@@ -109,6 +86,19 @@
         </property>
         <property name="text">
          <string>Volver</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>110</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Buscar</string>
         </property>
        </widget>
       </widget>
